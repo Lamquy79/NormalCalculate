@@ -1,0 +1,71 @@
+<html>
+
+<head>
+    <title>Thực hiện phép toán</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script language="javascript">
+        function tinhToan() {
+            a = document.frmTinhToan.txta;
+            b = document.frmTinhToan.txtb;
+            pt = document.frmTinhToan.pt;
+            kq = document.frmTinhToan.txtkq;
+
+            if (isNaN(a.value) || a.value == "") {
+                alert("a phải là một số!");
+                a.focus();
+            } else if (isNaN(b.value) || b.value == "") {
+                alert("b phải là một số!");
+                b.focus();
+            } else if ((pt.value == "/" || pt.value == "%") && parseInt(b.value) == 0) {
+                alert("Mẫu số b phải khác 0!");
+                kq.value = "";
+                b.focus();
+            } else {
+                kq.value = eval(a.value + pt.value + b.value);
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <form name="frmTinhToan">
+        <table border="0" align="center">
+            <tr>
+                <td colspan="2" align="center">
+                    <h2>THỰC HIỆN PHÉP TOÁN</h2>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">a = </td>
+                <td><input name="txta" /></td>
+            </tr>
+            <tr>
+                <td align="right">b = </td>
+                <td><input name="txtb" /></td>
+            </tr>
+            <tr>
+                <td align="right">Phép toán: </td>
+                <td>
+                    <select name="pt">
+                        <option value="+">+</option>
+                        <option value="-">-</option>
+                        <option value="*">*</option>
+                        <option value="/">/</option>
+                        <option value="%">%</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">Kết quả: </td>
+                <td><input name="txtkq" readonly /></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="button" value="Tính toán" onclick="tinhToan()">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>
